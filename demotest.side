@@ -1,0 +1,116 @@
+{
+  "id": "7624e603-939b-4c75-a635-18251f382a57",
+  "version": "2.0",
+  "name": "demotest",
+  "url": "https://en.wikipedia.org",
+  "tests": [{
+    "id": "72888dcf-09c8-46e6-9157-c198e3311209",
+    "name": "demoTest",
+    "commands": [{
+      "id": "0d04b173-70e8-4f54-965e-8de06825e295",
+      "comment": "",
+      "command": "open",
+      "target": "/wiki/Main_Page",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "622236c8-a233-47a0-bd01-cd8886b99f0d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f76eaf12-8f29-4963-9ea3-c63086232531",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Contents",
+      "targets": [
+        ["linkText=Contents", "linkText"],
+        ["css=#n-contents > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Contents')]", "xpath:link"],
+        ["xpath=//li[@id='n-contents']/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/wiki/Portal:Contents')])[2]", "xpath:href"],
+        ["xpath=//div[5]/div[2]/div[2]/div/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Contents')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "03efe429-ff67-499a-a9e0-78803d457327",
+      "comment": "",
+      "command": "click",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["name=search", "name"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//div[@id='simpleSearch']/input", "xpath:idRelative"],
+        ["xpath=//form/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b6f7994b-4d3b-4a3d-8f40-162bd62cd842",
+      "comment": "",
+      "command": "type",
+      "target": "id=searchInput",
+      "targets": [
+        ["id=searchInput", "id"],
+        ["name=search", "name"],
+        ["css=#searchInput", "css:finder"],
+        ["xpath=//input[@id='searchInput']", "xpath:attributes"],
+        ["xpath=//div[@id='simpleSearch']/input", "xpath:idRelative"],
+        ["xpath=//form/div/input", "xpath:position"]
+      ],
+      "value": "search"
+    }, {
+      "id": "f7b6ad03-398e-40f5-87bd-75840daca863",
+      "comment": "",
+      "command": "click",
+      "target": "css=.suggestions-result-current",
+      "targets": [
+        ["css=.suggestions-result-current", "css:finder"],
+        ["xpath=//a/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3995a7f9-4cda-4471-ab69-85cb45ba8bd4",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=searchButton",
+      "targets": [
+        ["id=searchButton", "id"],
+        ["name=go", "name"],
+        ["css=#searchButton", "css:finder"],
+        ["xpath=//input[@id='searchButton']", "xpath:attributes"],
+        ["xpath=//div[@id='simpleSearch']/input[4]", "xpath:idRelative"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "18fa94e2-fc06-435b-9894-f1b106189e27",
+      "comment": "",
+      "command": "click",
+      "target": "id=searchButton",
+      "targets": [
+        ["id=searchButton", "id"],
+        ["name=go", "name"],
+        ["css=#searchButton", "css:finder"],
+        ["xpath=//input[@id='searchButton']", "xpath:attributes"],
+        ["xpath=//div[@id='simpleSearch']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "b5ef9c90-a3e0-4f4a-9227-a600fe74c157",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["72888dcf-09c8-46e6-9157-c198e3311209"]
+  }],
+  "urls": ["https://en.wikipedia.org/"],
+  "plugins": []
+}
