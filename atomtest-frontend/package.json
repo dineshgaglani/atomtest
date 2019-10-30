@@ -6,8 +6,8 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
-    "react-konva": "16.8.6",
-    "konva": "4.0.15"
+    "react-gojs": "^4.3.0",
+    "react-sidebar": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
