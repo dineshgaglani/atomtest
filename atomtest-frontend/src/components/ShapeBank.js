@@ -10,7 +10,6 @@ class ShapeBank extends Component {
     render() {
         return ( <div>
             <button onClick={ () => this.props.onAddNode() }>Add a node</button>
-            <button onClick={ () => this.props.onAddLink() }>Add a link</button>
         </div> )
     }
 }

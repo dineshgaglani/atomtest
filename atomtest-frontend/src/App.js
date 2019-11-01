@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import ShapeBank from './components/ShapeBank';
 import WorkArea from './components/WorkAreaCanvas.js';
-import AtomTestSidebar from './components/Sidebar.js'
+import AtomTestSidebar from './components/Sidebar.js';
+import { Combobox } from 'react-widgets'
+
 
 import * as go from 'gojs';
 import { ToolManager, Diagram } from 'gojs';
@@ -23,13 +25,14 @@ class App extends Component {
     this.addLink = this.addLink.bind(this);
     this.updateNodeText = this.updateNodeText.bind(this);
     this.onTextEdited = this.onTextEdited.bind(this);
+    this.scenarioSelectionHandler = this.scenarioSelectionHandler.bind(this);
 
     this.state = {
         selectedNodes: [],
         model: {
             nodeDataArray: [],
             linkDataArray: [],
-            scenarios: []
+            scenarios:  [ {name: 's1', value:[1, 2, 4, 5]}, {name: 's2', value: [1, 3, 4, 5]} ]
         },
         sidebarOpen: false
     };
@@ -42,7 +45,7 @@ class App extends Component {
                ...this.state.model,
                nodeDataArray: [
                    ...this.state.model.nodeDataArray,
-                   { key: this.nodeId, text: 'node: ' + this.nodeId, color: 'red', uiAction: '', uiLocator: '' }
+                   { key: this.nodeId, text: 'node: ' + this.nodeId, fill: 'red', uiAction: '', uiLocator: '' }
                ]
            }
        }
@@ -173,6 +176,31 @@ class App extends Component {
   }
 
 
+  scenarioSelectionHandler(selectedValues) {
+
+    const nodesToColor = this.state.model.scenarios.find(s => s.name === selectedValues).value;
+
+    var newNodeDataArray = this.state.model.nodeDataArray.map(node => {
+        var changedColor = 'red'
+        if(nodesToColor.includes(node.key)) {
+           console.log("coloring node with key: " + node.key)
+           changedColor = 'yellow'
+        }
+        var changed = {...node}
+        changed.fill = changedColor
+        return changed
+    } )
+
+    console.log("updated state: " + JSON.stringify(newNodeDataArray))
+
+     this.setState({
+       ...this.state,
+       model: {
+          ...this.state.model,
+          nodeDataArray: newNodeDataArray
+       }
+     });
+  }
 
   onTextEdited(e) {
       const tb = e.subject;
@@ -192,6 +220,7 @@ class App extends Component {
           <h1>simple react based uml creation system</h1>
           <ShapeBank onAddNode={this.addNode}/>
           <WorkArea model={this.state.model} nodeSelectionHandler={this.nodeSelectionHandler} onTextEdited={this.onTextEdited} modelChangeHandler={this.modelChangeHandler} onAddLink={this.addLink}/>
+          <Combobox data={this.state.model.scenarios.map(s => s.name)} onChange={this.scenarioSelectionHandler} />
           {this.state.selectedNodes.length > 0 ? <AtomTestSidebar isOpen={this.state.sidebarOpen} nodeSelected={this.state.selectedNodes[0]}/> : null }
          </div>
     );

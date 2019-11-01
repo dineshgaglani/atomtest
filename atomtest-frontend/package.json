@@ -7,7 +7,8 @@
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
     "react-gojs": "^4.3.0",
-    "react-sidebar": "^3.0.2"
+    "react-sidebar": "^3.0.2",
+    "react-widgets": "4.4.4"
   },
   "scripts": {
     "start": "react-scripts start",
