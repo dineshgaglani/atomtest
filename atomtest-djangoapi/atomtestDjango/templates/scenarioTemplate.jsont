@@ -1,0 +1,5 @@
+{
+"id": "{{scenarioName}}",
+"name": "{{scenarioName}}",
+"commands": {{testSteps}}
+}

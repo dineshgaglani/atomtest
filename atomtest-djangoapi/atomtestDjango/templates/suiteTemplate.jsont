@@ -1,0 +1,17 @@
+{
+  "id": "7624e603-939b-4c75-a635-18251f382a57",
+  "version": "2.0",
+  "name": "UmlToSeleniumDemo",
+  "url": "https://en.wikipedia.org",
+  "tests": {{scenarios}},
+  "suites": [{
+    "id": "b5ef9c90-a3e0-4f4a-9227-a600fe74c157",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": {{scenarioIds}}
+  }],
+  "urls": ["https://en.wikipedia.org/"],
+  "plugins": []
+}

@@ -1,0 +1,28 @@
+{
+  "id": "7624e603-939b-4c75-a635-18251f382a57",
+  "version": "2.0",
+  "name": "UmlToSeleniumDemo",
+  "url": "https://en.wikipedia.org",
+  "tests": [{
+    "id": "72888dcf-09c8-46e6-9157-c198e3311209",
+    "name": "demoTest",
+    "commands": [{
+                     "id": "18fa94e2-fc06-435b-9894-f1b106189e27",
+                     "comment": "Go to wikipedia",
+                     "command": "open",
+                     "target": "loc1",
+                     "targets": [["loc1", "linkText"],["css=#n-contents > a", "css:finder"]],
+                     "value": ""
+                 }]
+  }],
+  "suites": [{
+    "id": "b5ef9c90-a3e0-4f4a-9227-a600fe74c157",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["72888dcf-09c8-46e6-9157-c198e3311209"]
+  }],
+  "urls": ["https://en.wikipedia.org/"],
+  "plugins": []
+}

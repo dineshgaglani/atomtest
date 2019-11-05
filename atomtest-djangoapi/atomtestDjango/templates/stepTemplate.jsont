@@ -1,0 +1,8 @@
+{
+  "id": "{{key}}",
+  "comment": "{{text}}",
+  "command": "{{uiAction}}",
+  "target": "{{uiLocators[0]}}",
+  "targets": {{uiLocators}},
+  "value": "{{value}}"
+}

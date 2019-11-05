@@ -26,6 +26,9 @@ class App extends Component {
     this.updateNodeText = this.updateNodeText.bind(this);
     this.onTextEdited = this.onTextEdited.bind(this);
     this.scenarioSelectionHandler = this.scenarioSelectionHandler.bind(this);
+    this.onSubmitUiLocatorsChange = this.onSubmitUiLocatorsChange.bind(this);
+
+    this.onGenerateDummyData = this.onGenerateDummyData.bind(this);
 
     this.state = {
         selectedNodes: [],
@@ -45,7 +48,7 @@ class App extends Component {
                ...this.state.model,
                nodeDataArray: [
                    ...this.state.model.nodeDataArray,
-                   { key: this.nodeId, text: 'node: ' + this.nodeId, fill: 'red', uiAction: '', uiLocator: '' }
+                   { key: this.nodeId, text: 'node: ' + this.nodeId, fill: 'red', uiAction: '', uiLocators: [], uiValue: '' }
                ]
            }
        }
@@ -120,8 +123,9 @@ class App extends Component {
               ...this.state,
               selectedNodes: [...this.state.selectedNodes, {key: selectedNode.key,
                                                             text: selectedNode.text,
-                                                            uiLocator: selectedNode.uiLocator,
-                                                            uiAction: selectedNode.uiAction} ]
+                                                            uiLocators: selectedNode.uiLocators,
+                                                            uiAction: selectedNode.uiAction,
+                                                            uiValue: selectedNode.uiValue } ]
           });
       } else {
           const nodeIndexToRemove = this.state.selectedNodes.findIndex(nodeDetails => nodeDetails.key === nodeKey);
@@ -214,6 +218,152 @@ class App extends Component {
 //    console.log("onTextEdited called!")
   }
 
+  onGenerateDummyData() {
+    const newModel =   {
+                         "nodeDataArray": [
+                           {
+                             "key": 1,
+                             "text": "Go to wikipedia",
+                             "fill": "red",
+                             "uiAction": "open",
+                             "uiLocators": [['loc1', 'linkText'], ['loc2', 'linkText'], ['loc3', 'linkText'], ['loc4', 'linkText']],
+                             "uiValue": ''
+                           },
+                           {
+                             "key": 2,
+                             "text": "Click on search bar",
+                             "fill": "red",
+                             "uiAction": "",
+                             "uiLocators": [],
+                             "uiValue": ''
+                           },
+                           {
+                             "key": 3,
+                             "text": "Search for test automation",
+                             "fill": "red",
+                             "uiAction": "",
+                             "uiLocators": [],
+                             "uiValue": ''
+                           },
+                           {
+                             "key": 4,
+                             "text": "Search for devops",
+                             "fill": "red",
+                             "uiAction": "",
+                             "uiLocators": [],
+                             "uiValue": ''
+                           },
+                           {
+                             "key": 5,
+                             "text": "Check that the test automation page is displayed",
+                             "fill": "red",
+                             "uiAction": "",
+                             "uiLocators": [],
+                             "uiValue": ''
+                           },
+                           {
+                             "key": 6,
+                             "text": "Check that the devops page is displayed",
+                             "fill": "red",
+                             "uiAction": "",
+                             "uiLocators": [],
+                             "uiValue": ''
+                           },
+                           {
+                             "key": 7,
+                             "text": "Click on search bar",
+                             "fill": "red",
+                             "uiAction": "",
+                             "uiLocators": [],
+                             "uiValue": ''
+                           },
+                           {
+                             "key": 8,
+                             "text": "Search for India",
+                             "fill": "red",
+                             "uiAction": "",
+                             "uiLocators": [],
+                             "uiValue": ''
+                           },
+                           {
+                             "key": 9,
+                             "text": "Check that the india page is displayed",
+                             "fill": "red",
+                             "uiAction": "",
+                             "uiLocators": [],
+                             "uiValue": ''
+                           }
+                         ],
+                         "linkDataArray": [
+                           {
+                             "from": 1,
+                             "to": 2
+                           },
+                           {
+                             "from": 2,
+                             "to": 3
+                           },
+                           {
+                             "from": 2,
+                             "to": 4
+                           },
+                           {
+                             "from": 3,
+                             "to": 5
+                           },
+                           {
+                             "from": 4,
+                             "to": 6
+                           },
+                           {
+                             "from": 5,
+                             "to": 7
+                           },
+                           {
+                             "from": 6,
+                             "to": 7
+                           },
+                           {
+                             "from": 7,
+                             "to": 8
+                           },
+                           {
+                             "from": 8,
+                             "to": 9
+                           }
+                         ],
+                         "scenarios": [ {"name": "s1", value:[1, 2, 3, 5, 7, 8, 9]}, {"name": "s2", value: [1, 2, 4, 6, 7, 8, 9]} ]
+                       }
+
+
+    console.log("Generating dummy data!")
+    this.setState({
+       ...this.state,
+       model: newModel
+     })
+  }
+
+  onSubmitUiLocatorsChange(nodeKey, newUiLocators, newUiAction, newUiValue) {
+    console.log("Will replace UI Locators with: " + newUiLocators + " on node: " + nodeKey)
+    const nodeToUpdateIndex = this.state.model.nodeDataArray.findIndex(node => node.key === nodeKey);
+    this.setState({
+      ...this.state,
+      model: {
+          ...this.state.model,
+          nodeDataArray: [
+              ...this.state.model.nodeDataArray.slice(0, nodeToUpdateIndex),
+              {
+                  ...this.state.model.nodeDataArray[nodeToUpdateIndex],
+                  uiLocators: newUiLocators,
+                  uiAction: newUiAction,
+                  uiValue: newUiValue
+              },
+              ...this.state.model.nodeDataArray.slice(nodeToUpdateIndex + 1)
+          ]
+      }
+    });
+  }
+
   render() {
     return (
         <div>
@@ -221,7 +371,8 @@ class App extends Component {
           <ShapeBank onAddNode={this.addNode}/>
           <WorkArea model={this.state.model} nodeSelectionHandler={this.nodeSelectionHandler} onTextEdited={this.onTextEdited} modelChangeHandler={this.modelChangeHandler} onAddLink={this.addLink}/>
           <Combobox data={this.state.model.scenarios.map(s => s.name)} onChange={this.scenarioSelectionHandler} />
-          {this.state.selectedNodes.length > 0 ? <AtomTestSidebar isOpen={this.state.sidebarOpen} nodeSelected={this.state.selectedNodes[0]}/> : null }
+          <button onClick={() => this.onGenerateDummyData()}>Generate dummy data</button>
+          {this.state.selectedNodes.length > 0 ? <AtomTestSidebar isOpen={this.state.sidebarOpen} nodeSelected={this.state.selectedNodes[0]} onSubmitUiLocatorsChange={this.onSubmitUiLocatorsChange} /> : null }
          </div>
     );
   }
