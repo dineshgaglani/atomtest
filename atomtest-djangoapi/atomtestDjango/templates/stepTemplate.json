@@ -2,7 +2,7 @@
   "id": "{{key}}",
   "comment": "{{text}}",
   "command": "{{uiAction}}",
-  "target": "{{uiLocators[0]}}",
+  "target": "{{uiLocators[0][0]}}",
   "targets": {{uiLocators}},
   "value": "{{value}}"
 }

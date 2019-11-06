@@ -74,5 +74,6 @@ class TestScenarioGeneration(TestCase):
         }])
 
     def test_full_suite_generation(self):
-        res = scenarioSeleniumHelper.create_seleniums_for_scenarios(model['scenarios'], model['nodeDataArray'])
+        modelObj = eval(model)
+        res = scenarioSeleniumHelper.create_seleniums_for_scenarios(modelObj['scenarios'], modelObj['nodeDataArray'])
         self.assertEqual(res, "")
