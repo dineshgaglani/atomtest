@@ -1,0 +1,183 @@
+{
+  "id": "7624e603-939b-4c75-a635-18251f382a57",
+  "version": "2.0",
+  "name": "UmlToSeleniumDemo",
+  "url": "https://en.wikipedia.org",
+  "tests": [
+    {
+      "id": "s1",
+      "name": "s1",
+      "commands": [
+        {
+          "id": "1",
+          "comment": "Go to wikipedia",
+          "command": "open",
+          "target": "loc1",
+          "targets": [
+            [
+              "loc1",
+              "linkText"
+            ],
+            [
+              "loc2",
+              "linkText"
+            ],
+            [
+              "loc3",
+              "linkText"
+            ],
+            [
+              "loc4",
+              "linkText"
+            ]
+          ],
+          "value": ""
+        },
+        {
+          "id": "2",
+          "comment": "Click on search bar",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "3",
+          "comment": "Search for test automation",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "5",
+          "comment": "Check that the test automation page is displayed",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "7",
+          "comment": "Click on search bar",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "8",
+          "comment": "Search for India",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9",
+          "comment": "Check that the india page is displayed",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "s2",
+      "commands": [
+        {
+          "id": "1",
+          "comment": "Go to wikipedia",
+          "command": "open",
+          "target": "loc1",
+          "targets": [
+            [
+              "loc1",
+              "linkText"
+            ],
+            [
+              "loc2",
+              "linkText"
+            ],
+            [
+              "loc3",
+              "linkText"
+            ],
+            [
+              "loc4",
+              "linkText"
+            ]
+          ],
+          "value": ""
+        },
+        {
+          "id": "2",
+          "comment": "Click on search bar",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "4",
+          "comment": "Search for devops",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "6",
+          "comment": "Check that the devops page is displayed",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "7",
+          "comment": "Click on search bar",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "8",
+          "comment": "Search for India",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        },
+        {
+          "id": "9",
+          "comment": "Check that the india page is displayed",
+          "command": "",
+          "target": "",
+          "targets": [],
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "suites": [
+    {
+      "id": "b5ef9c90-a3e0-4f4a-9227-a600fe74c157",
+      "name": "Default Suite",
+      "persistSession": "false",
+      "parallel": "false",
+      "timeout": 300,
+      "tests": [
+        "s1",
+        "s2"
+      ]
+    }
+  ],
+  "urls": [
+    "https://en.wikipedia.org/"
+  ],
+  "plugins": []
+}

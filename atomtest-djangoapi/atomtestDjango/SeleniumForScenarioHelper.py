@@ -7,6 +7,7 @@ def create_steps_for_scenario(scenario_steps, nodes, j2_env):
     steps = []
     for step in scenario_steps:
         nodeForKey = get_node_with_key(nodes, step)
+        nodeForKey['target'] = nodeForKey['uiLocators'][0][0] if len(nodeForKey['uiLocators']) > 0 else ''
         stepObj = eval(j2_env.get_template('stepTemplate.json').render(nodeForKey))
         steps.append(stepObj)
 
@@ -29,10 +30,11 @@ def create_seleniums_for_scenarios(scenarios, nodes):
     j2_env = Environment(loader=FileSystemLoader(THIS_DIR + '/templates'), trim_blocks=True)
 
     selenium_scenarios = get_aggregated_scenarios(scenarios, nodes, j2_env)
-    selenium_scenario_obj = eval(selenium_scenarios)
 
     scenario_ids = list(map(lambda sc: sc['name'], scenarios))
-    return j2_env.get_template('suiteTemplate.json').render(scenarios=selenium_scenario_obj, scenarioIds=scenario_ids)
+    selenium_script = j2_env.get_template('suiteTemplate.json').render(scenarios=selenium_scenarios, scenarioIds=scenario_ids)
+
+    return eval(selenium_script)
 
 
 def get_node_with_key(nodes, step):
