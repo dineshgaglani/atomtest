@@ -1,0 +1,78 @@
+{
+  'id': 'be1dc4c6-660e-4117-acbb-27cbc850c66e',
+  'version': '2.0',
+  'name': 'CreateNodesFromSeleniumSuite',
+  'url': 'https://en.wikipedia.org',
+  'tests': [{
+    'id': '0261e1ac-c8fb-4ae8-858e-fda3a623b324',
+    'name': 'SidebarNavigationS1',
+    'commands': [{
+      'id': 'c638fbb4-46f3-43db-8181-b516a422826a',
+      'comment': 'Go to wikipedia main page',
+      'command': 'open',
+      'target': '/wiki/Main_Page',
+      'targets': [],
+      'value': ''
+    }, {
+      'id': '32d40a67-769c-4856-955c-60f58848a00f',
+      'comment': 'Maximize window',
+      'command': 'setWindowSize',
+      'target': '1536x824',
+      'targets': [],
+      'value': ''
+    }, {
+      'id': 'fa83411b-06bb-4e5b-8ecf-94546ac0a452',
+      'comment': 'Navigate to FeaturedContent',
+      'command': 'click',
+      'target': 'linkText=Featured content',
+      'targets': [
+        ['linkText=Featured content', 'linkText'],
+        ['css=#n-featuredcontent > a', 'css:finder'],
+        ['xpath=//a[contains(text(),'Featured content')]', 'xpath:link'],
+        ['xpath=//li[@id='n-featuredcontent']/a', 'xpath:idRelative'],
+        ['xpath=//a[contains(@href, '/wiki/Portal:Featured_content')]', 'xpath:href'],
+        ['xpath=//div[5]/div[2]/div[2]/div/ul/li[3]/a', 'xpath:position'],
+        ['xpath=//a[contains(.,'Featured content')]', 'xpath:innerText']
+      ],
+      'value': ''
+    }, {
+      'id': '6b3463b0-9a9a-4cb0-91b7-74a966b8cc4b',
+      'comment': 'Navigate to Current events',
+      'command': 'click',
+      'target': 'css=#n-currentevents > a',
+      'targets': [
+        ['css=#n-currentevents > a', 'css:finder'],
+        ['xpath=(//a[contains(text(),'Current events')])[2]', 'xpath:link'],
+        ['xpath=//li[@id='n-currentevents']/a', 'xpath:idRelative'],
+        ['xpath=(//a[contains(@href, '/wiki/Portal:Current_events')])[2]', 'xpath:href'],
+        ['xpath=//div[2]/div/ul/li[4]/a', 'xpath:position']
+      ],
+      'value': ''
+    }, {
+      'id': '3f07dcba-57f3-474f-8d06-f56f4d9a3c78',
+      'comment': 'Naviagate to wikipedia store',
+      'command': 'click',
+      'target': 'linkText=Wikipedia store',
+      'targets': [
+        ['linkText=Wikipedia store', 'linkText'],
+        ['css=#n-shoplink > a', 'css:finder'],
+        ['xpath=//a[contains(text(),'Wikipedia store')]', 'xpath:link'],
+        ['xpath=//li[@id='n-shoplink']/a', 'xpath:idRelative'],
+        ['xpath=//a[contains(@href, '//shop.wikimedia.org')]', 'xpath:href'],
+        ['xpath=//div[2]/div/ul/li[7]/a', 'xpath:position'],
+        ['xpath=//a[contains(.,'Wikipedia store')]', 'xpath:innerText']
+      ],
+      'value': ''
+    }]
+  }],
+  'suites': [{
+    'id': 'a8a06010-4d56-41f7-a1af-0c7a333ac400',
+    'name': 'Default Suite',
+    'persistSession': 'false',
+    'parallel': 'false',
+    'timeout': 300,
+    'tests': ['0261e1ac-c8fb-4ae8-858e-fda3a623b324']
+  }],
+  'urls': ['https://en.wikipedia.org/'],
+  'plugins': []
+}
