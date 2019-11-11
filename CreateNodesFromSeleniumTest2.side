@@ -1,0 +1,80 @@
+{
+  "id": "40fe440b-0a0b-4646-9cbd-ffa10c33aca8",
+  "version": "2.0",
+  "name": "CreateNodesFromSeleniumSuite",
+  "url": "https://en.wikipedia.org",
+  "tests": [{
+    "id": "845aa301-8c65-4507-b7d9-9af139b62a41",
+    "name": "testingModularity",
+    "commands": [{
+      "id": "6cceba1e-e7b4-4186-9ece-e0dcb00beb12",
+      "comment": "",
+      "command": "open",
+      "target": "/wiki/Main_Page",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a76081f9-78c5-445d-ab00-8e75145710db",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1536x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "18dac132-881f-4df2-a804-63caa542fef0",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Featured content",
+      "targets": [
+        ["linkText=Featured content", "linkText"],
+        ["css=#n-featuredcontent > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Featured content')]", "xpath:link"],
+        ["xpath=//li[@id='n-featuredcontent']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/wiki/Portal:Featured_content')]", "xpath:href"],
+        ["xpath=//div[5]/div[2]/div[2]/div/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Featured content')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "df6f3e38-57b8-48b4-af94-406b9e192a30",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Random article",
+      "targets": [
+        ["linkText=Random article", "linkText"],
+        ["css=#n-randompage > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Random article')]", "xpath:link"],
+        ["xpath=//li[@id='n-randompage']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/wiki/Special:Random')]", "xpath:href"],
+        ["xpath=//div[2]/div/ul/li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Random article')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "08382209-3370-4450-82e0-c700f185d6a7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Wikipedia store",
+      "targets": [
+        ["linkText=Wikipedia store", "linkText"],
+        ["css=#n-shoplink > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Wikipedia store')]", "xpath:link"],
+        ["xpath=//li[@id='n-shoplink']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '//shop.wikimedia.org')]", "xpath:href"],
+        ["xpath=//div[2]/div/ul/li[7]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Wikipedia store')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a7dd0139-f17e-4d50-adb3-7f5fb9880623",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["845aa301-8c65-4507-b7d9-9af139b62a41"]
+  }],
+  "urls": ["https://en.wikipedia.org/"],
+  "plugins": []
+}

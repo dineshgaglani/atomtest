@@ -31,9 +31,8 @@ The .side file gets downloaded and can be opened on the user's selenium ide tool
 
 You could also go the other way by recording selenium IDE tests and importing them to the system (button to be completed)
 
-The system first creates the nodes for the first scenario and then for subsequent scenarios, the nodes with the same selenium 'command', 'value' are merged
-
-------Screenshots in progress----
+The system first creates the nodes for the test steps in the first scenario and then for subsequent scenarios, the nodes with the same selenium 'command', 'value' are merged
+![alt text](https://github.com/dineshgaglani/atomtest/blob/master/DocumentationImages/SIDEtoGraphGenExample.JPG)
 
 
 In progress:

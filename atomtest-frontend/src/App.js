@@ -48,7 +48,7 @@ class App extends Component {
                ...this.state.model,
                nodeDataArray: [
                    ...this.state.model.nodeDataArray,
-                   { key: this.nodeId, text: 'node: ' + this.nodeId, fill: 'red', uiAction: '', uiLocators: [], uiValue: '' }
+                   { key: this.nodeId, text: 'node: ' + this.nodeId, fill: 'red', uiAction: '', uiLocators: [], uiValue: '', target: '' }
                ]
            }
        }
@@ -125,6 +125,7 @@ class App extends Component {
                                                             text: selectedNode.text,
                                                             uiLocators: selectedNode.uiLocators,
                                                             uiAction: selectedNode.uiAction,
+                                                            target: selectedNode.target,
                                                             uiValue: selectedNode.uiValue } ]
           });
       } else {
@@ -227,6 +228,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "open",
                              "uiLocators": [['loc1', 'linkText'], ['loc2', 'linkText'], ['loc3', 'linkText'], ['loc4', 'linkText']],
+                             "target": '',
                              "uiValue": ''
                            },
                            {
@@ -235,6 +237,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "",
                              "uiLocators": [],
+                             "target": '',
                              "uiValue": ''
                            },
                            {
@@ -243,6 +246,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "",
                              "uiLocators": [],
+                             "target": '',
                              "uiValue": ''
                            },
                            {
@@ -251,6 +255,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "",
                              "uiLocators": [],
+                             "target": '',
                              "uiValue": ''
                            },
                            {
@@ -259,6 +264,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "",
                              "uiLocators": [],
+                             "target": '',
                              "uiValue": ''
                            },
                            {
@@ -267,6 +273,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "",
                              "uiLocators": [],
+                             "target": '',
                              "uiValue": ''
                            },
                            {
@@ -275,6 +282,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "",
                              "uiLocators": [],
+                             "target": '',
                              "uiValue": ''
                            },
                            {
@@ -283,6 +291,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "",
                              "uiLocators": [],
+                             "target": '',
                              "uiValue": ''
                            },
                            {
@@ -291,6 +300,7 @@ class App extends Component {
                              "fill": "red",
                              "uiAction": "",
                              "uiLocators": [],
+                             "target": '',
                              "uiValue": ''
                            }
                          ],
@@ -343,7 +353,217 @@ class App extends Component {
      })
   }
 
-  onSubmitUiLocatorsChange(nodeKey, newUiLocators, newUiAction, newUiValue) {
+  onGenerateSeleniumParsedData() {
+    const seleniumFileGeneratedData = {
+                                        "nodeDataArray": [
+                                          {
+                                            "key": 0,
+                                            "text": "Go to wikipedia main page",
+                                            "fill": "red",
+                                            "uiAction": "open",
+                                            "uiLocators": [],
+                                            "uiValue": "",
+                                            "target": "/wiki/Main_Page"
+                                          },
+                                          {
+                                            "key": 1,
+                                            "text": "Maximize window",
+                                            "fill": "red",
+                                            "uiAction": "setWindowSize",
+                                            "uiLocators": [],
+                                            "uiValue": "",
+                                            "target": "1536x824"
+                                          },
+                                          {
+                                            "key": 2,
+                                            "text": "Navigate to FeaturedContent",
+                                            "fill": "red",
+                                            "uiAction": "click",
+                                            "uiLocators": [
+                                              [
+                                                "linkText=Feat ured content",
+                                                "linkText"
+                                              ],
+                                              [
+                                                "css=#n-featuredcontent > a",
+                                                "css:finder"
+                                              ],
+                                              [
+                                                "xpath=//a[contains(text(),'Featured content')]",
+                                                "xpath:link"
+                                              ],
+                                              [
+                                                "xpath=//li[@id='n-featuredcontent']/a",
+                                                "xpath:idRelative"
+                                              ],
+                                              [
+                                                "x path=//a[contains(@href, '/wiki/Portal:Featured_content')]",
+                                                "xpath:href"
+                                              ],
+                                              [
+                                                "xpath=//div[5]/div[2]/div[2]/div/ul/li[3]/a",
+                                                "xpath:position"
+                                              ],
+                                              [
+                                                "xpath=//a[contains(.,'Featured content')]",
+                                                "xpath:innerText"
+                                              ]
+                                            ],
+                                            "uiValue": "",
+                                            "target": "linkText=Featured content"
+                                          },
+                                          {
+                                            "key": 3,
+                                            "text": "Navigate to Current events",
+                                            "fill": "red",
+                                            "uiAction": "click",
+                                            "uiLocators": [
+                                              [
+                                                "css=#n-currentevents > a",
+                                                "css:finder"
+                                              ],
+                                              [
+                                                "xpath =(//a[contains(text(),'Current events')])[2]",
+                                                "xpath:link"
+                                              ],
+                                              [
+                                                "xpath=//li[@id='n-currentevents']/a",
+                                                "xpath:idRelative"
+                                              ],
+                                              [
+                                                "xpath=(//a[contains(@href, '/wiki/Portal:Current_events')])[2]",
+                                                "xpath:href"
+                                              ],
+                                              [
+                                                "xpath=//div[2]/div/ul/li[4]/a",
+                                                "xpath:position"
+                                              ]
+                                            ],
+                                            "uiValue": "",
+                                            "target": "css=#n-currentevents > a"
+                                          },
+                                          {
+                                            "key": 4,
+                                            "text": "Naviagate to wikipedia store",
+                                            "fill": "red",
+                                            "uiAction": "click",
+                                            "uiLocators": [
+                                              [
+                                                "linkText=Wikipedia store",
+                                                "linkText"
+                                              ],
+                                              [
+                                                "css=#n-shoplink > a",
+                                                "css:finder"
+                                              ],
+                                              [
+                                                "xpath=//a[contains(text(),'Wikipedia store')]",
+                                                "xpath:link"
+                                              ],
+                                              [
+                                                "xpath=//li[@id='n-shoplink']/a",
+                                                "xpath:idRelative"
+                                              ],
+                                              [
+                                                "x path=//a[contains(@href, '//shop.wikimedia.org')]",
+                                                "xpath:href"
+                                              ],
+                                              [
+                                                "xpath=//div[2]/div/ul/li[7]/a",
+                                                "xpath:position"
+                                              ],
+                                              [
+                                                "xpath=//a[contains(.,'Wikipedia store')]",
+                                                "xpath:innerText"
+                                              ]
+                                            ],
+                                            "uiValue": "",
+                                            "targ et": "linkText=Wikipedia store"
+                                          },
+                                          {
+                                            "key": 5,
+                                            "text": "Perform action: click on locator: linkText=Random article, css=#n-randompage > a, xpath=//a[contains(text(),'Random article')], xpath=//li[@id='n-randomp age']/a, xpath=//a[contains(@href, '/wiki/Special:Random')], xpath=//div[2]/div/ul/li[5]/a, xpath=//a[contains(.,'Random article')] with value: ",
+                                            "fill": "red",
+                                            "uiAction": "click",
+                                            "uiLocators": [
+                                              [
+                                                "linkT ext=Random article",
+                                                "linkText"
+                                              ],
+                                              [
+                                                "css=#n-randompage > a",
+                                                "css:finder"
+                                              ],
+                                              [
+                                                "xpath=//a[contains(text(),'Random article')]",
+                                                "xpath:link"
+                                              ],
+                                              [
+                                                "xpath=//li[@id='n-randompage']/a",
+                                                "xpath:idRelative"
+                                              ],
+                                              [
+                                                "xpath=/ /a[contains(@href, '/wiki/Special:Random')]",
+                                                "xpath:href"
+                                              ],
+                                              [
+                                                "xpath=//div[2]/div/ul/li[5]/a",
+                                                "xpath:position"
+                                              ],
+                                              [
+                                                "xpath=//a[contains(.,'Random article')]",
+                                                "xpath:innerText"
+                                              ]
+                                            ],
+                                            "uiValue": "",
+                                            "target": "l inkText=Random article"
+                                          }
+                                        ],
+                                        "linkDataArray": [
+                                          {
+                                            "from": 3,
+                                            "to": 4
+                                          },
+                                          {
+                                            "from": 2,
+                                            "to": 3
+                                          },
+                                          {
+                                            "from": 1,
+                                            "to": 2
+                                          },
+                                          {
+                                            "from": 0,
+                                            "to": 1
+                                          },
+                                          {
+                                            "from": 5,
+                                            "to": 4
+                                          },
+                                          {
+                                            "from": 2,
+                                            "to": 5
+                                          },
+                                          {
+                                            "from": 1,
+                                            "to": 2
+                                          },
+                                          {
+                                            "from": 0,
+                                            "to": 1
+                                          }
+                                        ],
+                                        "scenarios": []
+                                      }
+
+    console.log("Generating selenium data!")
+        this.setState({
+           ...this.state,
+           model: seleniumFileGeneratedData
+         })
+  }
+
+  onSubmitUiLocatorsChange(nodeKey, newUiLocators, newUiAction, newUiValue, newUiTarget) {
     console.log("Will replace UI Locators with: " + newUiLocators + " on node: " + nodeKey)
     const nodeToUpdateIndex = this.state.model.nodeDataArray.findIndex(node => node.key === nodeKey);
     this.setState({
@@ -356,6 +576,7 @@ class App extends Component {
                   ...this.state.model.nodeDataArray[nodeToUpdateIndex],
                   uiLocators: newUiLocators,
                   uiAction: newUiAction,
+                  target: newUiTarget,
                   uiValue: newUiValue
               },
               ...this.state.model.nodeDataArray.slice(nodeToUpdateIndex + 1)
@@ -372,6 +593,7 @@ class App extends Component {
           <WorkArea model={this.state.model} nodeSelectionHandler={this.nodeSelectionHandler} onTextEdited={this.onTextEdited} modelChangeHandler={this.modelChangeHandler} onAddLink={this.addLink}/>
           <Combobox data={this.state.model.scenarios.map(s => s.name)} onChange={this.scenarioSelectionHandler} />
           <button onClick={() => this.onGenerateDummyData()}>Generate dummy data</button>
+          <button onClick={() => this.onGenerateSeleniumParsedData()}>Generate Selenium Parsed data</button>
           {this.state.selectedNodes.length > 0 ? <AtomTestSidebar isOpen={this.state.sidebarOpen} nodeSelected={this.state.selectedNodes[0]} onSubmitUiLocatorsChange={this.onSubmitUiLocatorsChange} /> : null }
          </div>
     );

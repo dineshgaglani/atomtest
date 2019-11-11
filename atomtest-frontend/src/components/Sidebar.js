@@ -9,7 +9,8 @@ class AtomTestSidebar extends Component {
           sidebarOpen: true,
           updatedUiLocators: [...this.props.nodeSelected.uiLocators],
           updatedUiAction: this.props.nodeSelected.uiAction,
-          updatedUiValue: this.props.nodeSelected.uiValue
+          updatedUiValue: this.props.nodeSelected.uiValue,
+          updatedTarget: this.props.nodeSelected.target
         };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.onUiLocatorChanged = this.onUiLocatorChanged.bind(this);
@@ -61,6 +62,7 @@ class AtomTestSidebar extends Component {
                     <label>Selected Node Action: </label><input id='updatedUiAction' onChange={this.onUiPropertyChanged} defaultValue={this.state.updatedUiAction}/><br/>
                     <label>Selected Node Locators: </label> {locatorsRender}
                     <button onClick={e => this.onAddUiLocatorButtonPressed(e)}>+</button><br/>
+                    <label>Selected Node UiTarget: </label><input id='updatedTarget' onChange={this.onUiPropertyChanged} defaultValue={this.state.updatedTarget}/><br/>
                     <label>Selected Node UiValue: </label><input id='updatedUiValue' onChange={this.onUiPropertyChanged} defaultValue={this.state.updatedUiValue}/><br/>
                     <button onClick={this.onUiLocatorsUpdateButtonPressed}>update UI properties for node</button>
                 </div>}
